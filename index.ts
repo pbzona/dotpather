@@ -1,10 +1,14 @@
 module.exports = dotpath
 
-function dotpath (str) {
-  var parts = str.toString().split('.')
-  var len = parts.length
+type ObjectWithPath = {
+  [key: string]: any
+}
 
-  return function parse (obj) {
+function dotpath (str: string) {
+  const parts = str.toString().split('.')
+  const len = parts.length
+
+  return function parse (obj: ObjectWithPath) {
     var testKey
 
     for (var i = 0; i < len; ++i) {
